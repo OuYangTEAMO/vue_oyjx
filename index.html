@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<img src="img/animals.jpeg" @click="show()" style="width: 300px;height: 300px;" title="请点击动物">
+		</div>
+		<script type="text/javascript">
+			let v=new Vue({
+				el:"#app",
+				data:{
+					flag:0,
+					clickX:0,
+					clickY:0
+				},
+				methods:{
+					show(){
+						//老鼠minXY(24,27),maxXY(76,101)
+						console.log(event.clientX+","+event.clientY);
+						console.log(v.flag);
+						v.clickX=event.clientX;
+						v.clickY=event.clientY;
+						if(v.flag==0 && v.clickX>24&&v.clickX<76&&v.clickY>27&&v.clickY<101){
+							console.log("第一次点击");
+							v.flag=1;//点击次数=1；
+							alert("恭喜，鼠生肖验证成功~！");
+						}
+						//牛minXY(105,35),maxXY(136,97)
+						if(v.flag==1&&v.clickX>105&&v.clickX<136&&v.clickY>35&&v.clickY<97){
+							console.log("第二次点击");
+							v.flag=2;
+							console.log(v.flag);
+							alert("恭喜，牛生肖验证成功~！");
+						}
+						//老虎minXY(161,29),maxXY(203,102)
+						if(v.flag==2&&v.clickX>161&&v.clickX<203&&v.clickY>29&&v.clickY<102){
+							console.log("第三次点击");
+							v.flag=3;
+							console.log(v.flag);
+							alert("恭喜，虎生肖验证成功~！");
+						}
+						
+						//兔minXY(229,26),maxXY(300,104)
+						if(v.flag==3&&v.clickX>229&&v.clickX<300&&v.clickY>26&&v.clickY<104){
+							console.log("第四次点击");
+							v.flag=4;
+							console.log(v.flag);
+							alert("恭喜，兔生肖验证成功~！");
+						}
+						
+						//龙minXY(21,119),maxXY(87,209)
+						if(v.flag==4&&v.clickX>21&&v.clickX<87&&v.clickY>119&&v.clickY<209){
+							console.log("第五次点击");
+							v.flag=5;
+							console.log(v.flag);
+							alert("恭喜，龙生肖验证成功~！");
+						}
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
